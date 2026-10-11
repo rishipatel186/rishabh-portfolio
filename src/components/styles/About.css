@@ -1,0 +1,170 @@
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  place-items: center;
+  position: relative;
+  opacity: 1;
+  height: auto;
+  width: var(--cWidth);
+  margin: auto;
+}
+
+.about-me {
+  padding: 40px 0px;
+  padding-bottom: 0;
+  width: 100%;
+  max-width: calc(100% - 15px);
+}
+
+/* Badge / label */
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accentColor);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(194, 164, 255, 0.25);
+  border-radius: 40px;
+  background: rgba(194, 164, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.about-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accentColor);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(194, 164, 255, 0.8);
+  animation: badge-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Paragraph */
+.about-me .para {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: rgba(234, 229, 236, 0.85);
+  margin: 0 0 22px 0;
+}
+
+/* Keyword highlights */
+.about-highlight {
+  background: none;
+  color: var(--accentColor);
+  font-weight: 700;
+  padding: 0 1px;
+  border-radius: 3px;
+}
+
+/* Divider */
+.about-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accentColor), transparent);
+  border-radius: 2px;
+  margin-bottom: 18px;
+  opacity: 0.6;
+}
+
+/* Chips */
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-chip {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(234, 229, 236, 0.6);
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.about-chip:hover {
+  border-color: rgba(194, 164, 255, 0.4);
+  color: var(--accentColor);
+  background: rgba(194, 164, 255, 0.06);
+}
+
+.about-me .split-word {
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+.about-me .split-line {
+  display: block;
+}
+
+@media only screen and (min-width: 600px) {
+  .about-section {
+    justify-content: center;
+  }
+  .about-me {
+    width: 500px;
+  }
+  .about-badge {
+    font-size: 11px;
+  }
+  .about-me .para {
+    font-size: 26px;
+    line-height: 1.55;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .about-me {
+    width: 500px;
+    max-width: calc(100% - 70px);
+    transform: translateY(0%);
+  }
+  .about-me .para {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+  .about-section {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .about-section {
+    width: var(--cWidth);
+    justify-content: right;
+    max-width: 1920px;
+    height: var(--vh);
+    padding: 0px;
+    opacity: 1;
+  }
+  .about-me {
+    padding: 0px;
+    width: 50%;
+  }
+  .about-me .para {
+    font-size: 1.75vw;
+    line-height: 1.55;
+  }
+}
+
+@media only screen and (min-width: 1950px) {
+  .about-me .para {
+    font-size: 2.2rem;
+    line-height: 1.5;
+  }
+}
