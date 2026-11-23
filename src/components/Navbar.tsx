@@ -17,7 +17,7 @@ const Navbar = () => {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
-      smoothWheel: true,
+      smoothWheel: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       wheelMultiplier: 1.7,
       touchMultiplier: 2,
       infinite: false,

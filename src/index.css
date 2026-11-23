@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
-
 :root {
   font-family: "Geist", sans-serif;
 
@@ -15,9 +13,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   --accentColor: #c2a4ff;
   --backgroundColor: #0b080c;
   --vh: 100vh;
@@ -172,5 +167,35 @@ body {
 @media screen and (max-width: 900px) {
   .techstack h2 {
     font-size: 40px;
+  }
+}
+
+/* Only interactive chrome should block text selection, so email, links and
+   copy still work everywhere else */
+.cursor-main,
+.character-model,
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Visible keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
