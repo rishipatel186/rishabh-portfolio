@@ -40,13 +40,6 @@
   height: 6px;
   background: var(--accentColor);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(194, 164, 255, 0.8);
-  animation: badge-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes badge-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
 }
 
 /* Paragraph */

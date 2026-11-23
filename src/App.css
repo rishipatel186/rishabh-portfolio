@@ -23,7 +23,7 @@
 }
 @media only screen and (max-width: 900px) {
   .section-container {
-    width: 500px;
+    width: min(680px, var(--cWidth));
     max-width: var(--cWidth);
   }
 }

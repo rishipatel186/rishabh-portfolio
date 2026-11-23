@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import Loading from "../components/Loading";
+import { isCompactViewport } from "../utils/breakpoints";
 
 interface LoadingType {
   isLoading: boolean;
@@ -17,9 +18,8 @@ export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(() => {
-    // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
-    return true;
+    // The loader waits on the 3D character, which only mounts on desktop
+    return !isCompactViewport();
   });
   const [loading, setLoading] = useState(0);
 
@@ -29,8 +29,8 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setLoading,
   };
   useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
+    // Auto-start animations in the compact layout since there's no 3D model
+    if (isCompactViewport()) {
       import("../components/utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {
