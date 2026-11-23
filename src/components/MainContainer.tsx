@@ -11,18 +11,18 @@ import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
+import { isCompactViewport } from "../utils/breakpoints";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
+    !isCompactViewport()
   );
-  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
   const [shouldRenderCharacter, setShouldRenderCharacter] = useState(false);
 
   useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
+      setIsDesktopView(!isCompactViewport());
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
@@ -32,7 +32,11 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth <= 1024) return;
+    // Re-runs when the viewport crosses the breakpoint (rotation, resize)
+    if (!isDesktopView) {
+      setShouldRenderCharacter(false);
+      return;
+    }
 
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     let idleId: number | undefined;
@@ -57,14 +61,14 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         clearTimeout(timeoutId);
       }
     };
-  }, []);
+  }, [isDesktopView]);
 
   return (
     <div className="container-main">
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && !isMobile && shouldRenderCharacter && children}
+      {isDesktopView && shouldRenderCharacter && children}
       <div className="container-main">
         <Landing />
         <About />
